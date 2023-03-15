@@ -1,4 +1,15 @@
-const playerSelection = "rock";
+// Prompts for player selection until a valid answer is received and returns it.
+function getPlayerChoice() {
+    let playerSelection;
+
+    while (playerSelection !== "Rock" && playerSelection !== "Paper" && playerSelection !== "Scissors") {
+        playerSelection = prompt("Rock, Paper, or Scissors?");
+        playerSelection = capitaliseFirstLetter(playerSelection.toLowerCase());
+    }
+
+    return playerSelection;
+
+} 
 
 // Will randomly return the computer's choice as one of "Rock", "Paper" or "Scissors".
 function getComputerChoice() {
@@ -16,9 +27,6 @@ function getComputerChoice() {
 
 // Plays a single round of Rock Paper Scissors.
 function playRound(playerSelect, computerSelect) {
-    playerSelect = capitaliseFirstLetter(playerSelect.toLowerCase());
-    computerSelect = capitaliseFirstLetter(computerSelect.toLowerCase());
-
     if (playerSelect === computerSelect) {
         return `Tie! You both chose ${playerSelect}`;
     } 
@@ -60,7 +68,7 @@ function game() {
     let computerRounds = 0;
 
     while (playerRounds < 5 && computerRounds < 5) {
-        round = playRound(playerSelection, getComputerChoice());
+        round = playRound(getPlayerChoice(), getComputerChoice());
         console.log(round);
 
         if (round.includes("You win!")) {
@@ -68,10 +76,11 @@ function game() {
         } else if (round.includes("You lose!")) {
             computerRounds ++;
         } else {}
+
+        console.log(playerRounds + " " + computerRounds);
     
     }
     
-    console.log(playerRounds + " " + computerRounds);
     console.log(result(playerRounds, computerRounds));
 }
 
@@ -79,4 +88,4 @@ function capitaliseFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-console.log(game())
+game()
