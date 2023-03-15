@@ -37,10 +37,9 @@ function playRound(playerSelect, computerSelect) {
 
     if (playerSelect === "Scissors" && computerSelect === "Rock") {
         return `You lose! ${computerSelect} beats ${playerSelect}`;
-    } else if (playerSelect === "Scissors" && computerSelect === "Rock") {
+    } else if (playerSelect === "Scissors" && computerSelect === "Paper") {
         return `You win! ${playerSelect} beats ${computerSelect}`;
     }
-
 
 }
 
@@ -48,4 +47,4 @@ function capitaliseFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-console.log(playRound("paper", "Rock"))
+console.log(playRound("scissors", "paper"))
