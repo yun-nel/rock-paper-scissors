@@ -25,7 +25,7 @@ function playRound(playerSelect, computerSelect) {
 
     if (playerSelect === "Rock" && computerSelect === "Paper") {
         return `You lose! ${computerSelect} beats ${playerSelect}`;
-    } else if (playerSelect === "Rock" && computerSelect === "Paper") {
+    } else if (playerSelect === "Rock" && computerSelect === "Scissors") {
         return `You win! ${playerSelect} beats ${computerSelect}`;
     }
  
@@ -43,8 +43,40 @@ function playRound(playerSelect, computerSelect) {
 
 }
 
+
+// Returns the result of a game.
+function result(playerRounds, computerRounds) {
+    if (playerRounds > computerRounds) {
+        return "YOU WIN!";
+    } else {
+        return "YOU LOSE.";
+    }
+}
+
+// Plays a first to five game of Rock Paper Scissors, keeps score and calls result() to report the winner/loser at the end.
+function game() {
+    let round;
+    let playerRounds = 0;
+    let computerRounds = 0;
+
+    while (playerRounds < 5 && computerRounds < 5) {
+        round = playRound(playerSelection, getComputerChoice());
+        console.log(round);
+
+        if (round.includes("You win!")) {
+            playerRounds++;
+        } else if (round.includes("You lose!")) {
+            computerRounds ++;
+        } else {}
+    
+    }
+    
+    console.log(playerRounds + " " + computerRounds);
+    console.log(result(playerRounds, computerRounds));
+}
+
 function capitaliseFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-console.log(playRound("scissors", "paper"))
+console.log(game())
