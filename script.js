@@ -20,10 +20,27 @@ function playRound(playerSelect, computerSelect) {
     computerSelect = capitaliseFirstLetter(computerSelect.toLowerCase());
 
     if (playerSelect === computerSelect) {
-        return `Tie! You both chose ${playerSelect}!`;
-    } else if (playerSelect === "rock" && computerSelect === "paper") {
-        return
+        return `Tie! You both chose ${playerSelect}`;
+    } 
+
+    if (playerSelect === "Rock" && computerSelect === "Paper") {
+        return `You lose! ${computerSelect} beats ${playerSelect}`;
+    } else if (playerSelect === "Rock" && computerSelect === "Paper") {
+        return `You win! ${playerSelect} beats ${computerSelect}`;
     }
+ 
+    if (playerSelect === "Paper" && computerSelect === "Rock") {
+        return `You win! ${playerSelect} beats ${computerSelect}`;
+    } else if (playerSelect === "Paper" && computerSelect === "Scissors") {
+        return `You lose! ${computerSelect} beats ${playerSelect}`;
+    }
+
+    if (playerSelect === "Scissors" && computerSelect === "Rock") {
+        return `You lose! ${computerSelect} beats ${playerSelect}`;
+    } else if (playerSelect === "Scissors" && computerSelect === "Rock") {
+        return `You win! ${playerSelect} beats ${computerSelect}`;
+    }
+
 
 }
 
@@ -31,4 +48,4 @@ function capitaliseFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-console.log(playRound(playerSelection, "Rock"))
+console.log(playRound("paper", "Rock"))
