@@ -1,18 +1,5 @@
 const roundResult = document.querySelector(".round-result");
 
-// Prompts for player selection until a valid answer is received and returns it.
-function getPlayerChoice() {
-    let playerSelection;
-
-    while (playerSelection !== "Rock" && playerSelection !== "Paper" && playerSelection !== "Scissors") {
-        playerSelection = prompt("Rock, Paper, or Scissors?");
-        playerSelection = capitaliseFirstLetter(playerSelection.toLowerCase());
-    }
-
-    return playerSelection;
-
-} 
-
 // Will randomly return the computer's choice as one of "Rock", "Paper" or "Scissors".
 function getComputerChoice() {
     const choice = Math.floor(Math.random() * 3) + 1;
