@@ -27,26 +27,29 @@ function getComputerChoice() {
 
 // Plays a single round of Rock Paper Scissors.
 function playRound(playerSelect, computerSelect) {
+
+    const roundResult = document.querySelector(".round-result");
+
     if (playerSelect === computerSelect) {
-        console.log(`Tie! You both chose ${playerSelect}`);
+        roundResult.textContent = (`Tie! You both chose ${playerSelect}`);
     } 
 
     if (playerSelect === "Rock" && computerSelect === "Paper") {
-        console.log(`You lose! ${computerSelect} beats ${playerSelect}`);
+        roundResult.textContent = (`You lose! ${computerSelect} beats ${playerSelect}`);
     } else if (playerSelect === "Rock" && computerSelect === "Scissors") {
-        console.log(`You win! ${playerSelect} beats ${computerSelect}`);
+        roundResult.textContent = (`You win! ${playerSelect} beats ${computerSelect}`);
     }
  
     if (playerSelect === "Paper" && computerSelect === "Rock") {
-        console.log(`You win! ${playerSelect} beats ${computerSelect}`);
+        roundResult.textContent = (`You win! ${playerSelect} beats ${computerSelect}`);
     } else if (playerSelect === "Paper" && computerSelect === "Scissors") {
-        console.log(`You lose! ${computerSelect} beats ${playerSelect}`);
+        roundResult.textContent = (`You lose! ${computerSelect} beats ${playerSelect}`);
     }
 
     if (playerSelect === "Scissors" && computerSelect === "Rock") {
-        console.log(`You lose! ${computerSelect} beats ${playerSelect}`);
+        roundResult.textContent = (`You lose! ${computerSelect} beats ${playerSelect}`);
     } else if (playerSelect === "Scissors" && computerSelect === "Paper") {
-        console.log(`You win! ${playerSelect} beats ${computerSelect}`);
+        roundResult.textContent = (`You win! ${playerSelect} beats ${computerSelect}`);
     }
 
 }
