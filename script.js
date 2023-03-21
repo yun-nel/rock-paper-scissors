@@ -28,25 +28,25 @@ function getComputerChoice() {
 // Plays a single round of Rock Paper Scissors.
 function playRound(playerSelect, computerSelect) {
     if (playerSelect === computerSelect) {
-        return `Tie! You both chose ${playerSelect}`;
+        console.log(`Tie! You both chose ${playerSelect}`);
     } 
 
     if (playerSelect === "Rock" && computerSelect === "Paper") {
-        return `You lose! ${computerSelect} beats ${playerSelect}`;
+        console.log(`You lose! ${computerSelect} beats ${playerSelect}`);
     } else if (playerSelect === "Rock" && computerSelect === "Scissors") {
-        return `You win! ${playerSelect} beats ${computerSelect}`;
+        console.log(`You win! ${playerSelect} beats ${computerSelect}`);
     }
  
     if (playerSelect === "Paper" && computerSelect === "Rock") {
-        return `You win! ${playerSelect} beats ${computerSelect}`;
+        console.log(`You win! ${playerSelect} beats ${computerSelect}`);
     } else if (playerSelect === "Paper" && computerSelect === "Scissors") {
-        return `You lose! ${computerSelect} beats ${playerSelect}`;
+        console.log(`You lose! ${computerSelect} beats ${playerSelect}`);
     }
 
     if (playerSelect === "Scissors" && computerSelect === "Rock") {
-        return `You lose! ${computerSelect} beats ${playerSelect}`;
+        console.log(`You lose! ${computerSelect} beats ${playerSelect}`);
     } else if (playerSelect === "Scissors" && computerSelect === "Paper") {
-        return `You win! ${playerSelect} beats ${computerSelect}`;
+        console.log(`You win! ${playerSelect} beats ${computerSelect}`);
     }
 
 }
@@ -62,7 +62,7 @@ function result(playerRounds, computerRounds) {
 }
 
 // Plays a first to five game of Rock Paper Scissors, keeps score and calls result() to report the winner/loser at the end.
-function game() {
+/* function game() {
     let round;
     let playerRounds = 0;
     let computerRounds = 0;
@@ -86,6 +86,12 @@ function game() {
 
 function capitaliseFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
-}
+} */
 
-game()
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach(function(button) {
+    button.addEventListener("click", function() {
+        playRound(button.textContent, getComputerChoice());
+    })
+});
