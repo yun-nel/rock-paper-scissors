@@ -1,3 +1,5 @@
+const roundResult = document.querySelector(".round-result");
+
 // Prompts for player selection until a valid answer is received and returns it.
 function getPlayerChoice() {
     let playerSelection;
@@ -24,8 +26,6 @@ function getComputerChoice() {
     }
 
 }
-
-const roundResult = document.querySelector(".round-result");
 
 // Plays a single round of Rock Paper Scissors.
 function playRound(playerSelect, computerSelect) {
@@ -54,6 +54,15 @@ function playRound(playerSelect, computerSelect) {
 
 }
 
+// Returns the result of a game.
+function result(playerRounds, computerRounds) {
+    if (playerRounds > computerRounds) {
+        return "YOU WIN!";
+    } else {
+        return "YOU LOSE.";
+    }
+}
+
 // Plays a first to five game of Rock Paper Scissors, keeps score and reports the winner/loser at the end.
 function game() {
     let playerRounds = 0;
@@ -73,12 +82,8 @@ function game() {
   
         scoreboard.textContent = ("You: " + playerRounds + " " + "CPU: " + computerRounds);
   
-        if (playerRounds === 5) {
-          roundResult.textContent = ("You won the game!");
-          playerRounds = 0;
-          computerRounds = 0;
-        } else if (computerRounds === 5) {
-            roundResult.textContent = ("You lost the game!");
+        if (playerRounds === 5 || computerRounds === 5) {
+          roundResult.textContent = result(playerRounds, computerRounds);
           playerRounds = 0;
           computerRounds = 0;
         }
