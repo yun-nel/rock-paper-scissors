@@ -25,10 +25,10 @@ function getComputerChoice() {
 
 }
 
+const roundResult = document.querySelector(".round-result");
+
 // Plays a single round of Rock Paper Scissors.
 function playRound(playerSelect, computerSelect) {
-
-    const roundResult = document.querySelector(".round-result");
 
     if (playerSelect === computerSelect) {
         roundResult.textContent = (`Tie! You both chose ${playerSelect}`);
@@ -54,47 +54,40 @@ function playRound(playerSelect, computerSelect) {
 
 }
 
-
-// Returns the result of a game.
-function result(playerRounds, computerRounds) {
-    if (playerRounds > computerRounds) {
-        return "YOU WIN!";
-    } else {
-        return "YOU LOSE.";
-    }
-}
-
-// Plays a first to five game of Rock Paper Scissors, keeps score and calls result() to report the winner/loser at the end.
-/* function game() {
-    let round;
+// Plays a first to five game of Rock Paper Scissors, keeps score and reports the winner/loser at the end.
+function game() {
     let playerRounds = 0;
     let computerRounds = 0;
-
-    while (playerRounds < 5 && computerRounds < 5) {
-        round = playRound(getPlayerChoice(), getComputerChoice());
-        console.log(round);
-
-        if (round.includes("You win!")) {
-            playerRounds++;
-        } else if (round.includes("You lose!")) {
-            computerRounds ++;
-        } else {}
-
-        console.log(playerRounds + " " + computerRounds);
-    
-    }
-    
-    console.log(result(playerRounds, computerRounds));
-}
-
+    const buttons = document.querySelectorAll("button");
+    const scoreboard = document.querySelector(".scoreboard");
+  
+    buttons.forEach(function(button) {
+      button.addEventListener("click", function() {
+        playRound(button.textContent, getComputerChoice());
+  
+        if (roundResult.textContent.includes("You win!")) {
+          playerRounds++;
+        } else if (roundResult.textContent.includes("You lose!")) {
+          computerRounds++;
+        }
+  
+        scoreboard.textContent = ("You: " + playerRounds + " " + "CPU: " + computerRounds);
+  
+        if (playerRounds === 5) {
+          roundResult.textContent = ("You won the game!");
+          playerRounds = 0;
+          computerRounds = 0;
+        } else if (computerRounds === 5) {
+            roundResult.textContent = ("You lost the game!");
+          playerRounds = 0;
+          computerRounds = 0;
+        }
+      });
+    });
+  }
+  
 function capitaliseFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
-} */
+}
 
-const buttons = document.querySelectorAll("button");
-
-buttons.forEach(function(button) {
-    button.addEventListener("click", function() {
-        playRound(button.textContent, getComputerChoice());
-    })
-});
+game();
